@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Creating a Navigation Bar using React and MUI
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+![Material-UI Navbar with Drawer](https://i.imgur.com/EqUBbgs.gif)
+
+## Available Scripts
+
+In the project directory, you can run:
 
 ## Available Scripts
 
