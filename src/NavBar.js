@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
   Drawer,
   List,
   ListItemButton,
@@ -11,12 +7,13 @@ import {
   ListItemText,
 } from "@mui/material";
 import {
-  Menu as MenuIcon,
   Home as HomeIcon,
-  MenuBook as MenuBookIcon, // Import MenuBookIcon
-  Group as GroupIcon, // Import GroupIcon
+  MenuBook as MenuBookIcon,
+  Group as GroupIcon,
 } from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
+
+import Header from "./Header";
 
 const NavBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -28,16 +25,7 @@ const NavBar = () => {
 
   return (
     <React.Fragment>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" color="inherit" onClick={toggleDrawer}>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            YourBrand
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Header toggleDrawer={toggleDrawer} />
       <Drawer anchor="left" open={openDrawer} onClose={toggleDrawer}>
         <List>
           <ListItemButton
