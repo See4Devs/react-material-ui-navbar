@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Material-UI Navbar with Drawer](https://i.imgur.com/EqUBbgs.gif)
+![Material-UI Navbar with Drawer](https://i.imgur.com/CGLJ2p9.gif)
 
 ## Available Scripts
 
