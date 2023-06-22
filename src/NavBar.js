@@ -1,19 +1,9 @@
 import React, { useState } from "react";
-import {
-  Drawer,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import {
-  Home as HomeIcon,
-  MenuBook as MenuBookIcon,
-  Group as GroupIcon,
-} from "@mui/icons-material";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
 import { Link, useLocation } from "react-router-dom";
-
-import Header from "./Header";
+import HistoryDrawer from "./HistoryDrawer";
 
 const NavBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -22,44 +12,45 @@ const NavBar = () => {
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
-
   return (
     <React.Fragment>
-      <Header toggleDrawer={toggleDrawer} />
-      <Drawer anchor="left" open={openDrawer} onClose={toggleDrawer}>
-        <List>
-          <ListItemButton
+      <AppBar position="static">
+        <Toolbar>
+          <Button
+            color="inherit"
             component={Link}
             to="/"
             selected={location.pathname === "/"}
           >
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItemButton>
-          <ListItemButton
+            Home
+          </Button>
+          <Button
+            color="inherit"
             component={Link}
             to="/blog"
             selected={location.pathname === "/blog"}
           >
-            <ListItemIcon>
-              <MenuBookIcon />
-            </ListItemIcon>
-            <ListItemText primary="Blog" />
-          </ListItemButton>
-          <ListItemButton
+            Blog
+          </Button>
+          <Button
+            color="inherit"
             component={Link}
             to="/team"
             selected={location.pathname === "/team"}
           >
-            <ListItemIcon>
-              <GroupIcon />
-            </ListItemIcon>
-            <ListItemText primary="Team" />
-          </ListItemButton>
-        </List>
-      </Drawer>
+            Team
+          </Button>
+          <Button
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer}
+          >
+            History
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <HistoryDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer}/>
     </React.Fragment>
   );
 };

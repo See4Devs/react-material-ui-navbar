@@ -8,8 +8,8 @@ import "./App.css";
 const App = () => {
   return (
     <Router>
-      <NavBar />
-      {/* <NavBarCustomized /> */}
+      {/* <NavBar /> */}
+      <NavBarCustomized />
       <div className="container mt-4">
         <Routes>
           {routes.map((route, index) => (

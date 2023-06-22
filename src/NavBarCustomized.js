@@ -1,75 +1,71 @@
 import React, { useState } from "react";
-import {
-  Drawer,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import {
-  Home as HomeIcon,
-  MenuBook as MenuBookIcon,
-  Group as GroupIcon
-} from "@mui/icons-material";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+
 import { Link, useLocation } from "react-router-dom";
 
-import Header from "./Header";
+import HistoryDrawer from "./HistoryDrawer";
 
-const NavBarCustomized = () => {
+const NavBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const location = useLocation();
 
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
-
   return (
     <React.Fragment>
-      <Header toggleDrawer={toggleDrawer} />
-      <Drawer
-        anchor="left"
-        open={openDrawer}
-        onClose={toggleDrawer}
-        sx={{ bgcolor: "primary.dark" }}
-      >
-        <List>
-          <ListItemButton
+      <AppBar position="static" sx={{ bgcolor: "primary.dark" }}>
+        <Toolbar>
+          <Button
+            color="inherit"
             component={Link}
             to="/"
-            selected={location.pathname === "/"}
-            sx={{ "&.Mui-selected": { bgcolor: "secondary.main" } }}
+            sx={{
+              bgcolor: location.pathname === "/" ? "secondary.main" : "",
+              color: "text.primary",
+            }}
           >
-            <ListItemIcon sx={{ color: "primary.light" }}>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" sx={{ color: "text.primary" }} />
-          </ListItemButton>
-          <ListItemButton
+            Home
+          </Button>
+          <Button
+            color="inherit"
             component={Link}
             to="/blog"
-            selected={location.pathname === "/blog"}
-            sx={{ "&.Mui-selected": { bgcolor: "secondary.main" } }}
+            sx={{
+              bgcolor: location.pathname === "/blog" ? "secondary.main" : "",
+            }}
           >
-            <ListItemIcon>
-              <MenuBookIcon />
-            </ListItemIcon>
-            <ListItemText primary="Blog" />
-          </ListItemButton>
-          <ListItemButton
+            Blog
+          </Button>
+          <Button
+            color="inherit"
             component={Link}
             to="/team"
-            selected={location.pathname === "/team"}
-            sx={{ "&.Mui-selected": { bgcolor: "secondary.main" } }}
+            sx={{
+              bgcolor: location.pathname === "/team" ? "secondary.main" : "",
+              color: "secondary.dark",
+            }}
           >
-            <ListItemIcon>
-              <GroupIcon />
-            </ListItemIcon>
-            <ListItemText primary="Team" />
-          </ListItemButton>
-        </List>
-      </Drawer>
+            Team
+          </Button>
+          <Button
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer}
+            sx={{
+              color: "primary.light",
+            }}
+          >
+            History
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <HistoryDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
     </React.Fragment>
   );
 };
 
-export default NavBarCustomized;
+export default NavBar;
